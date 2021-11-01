@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "name": "backend",
+  "description": "Backend proyecto ciclo 4",
+  "version": "1.0.0",
+  "main": "app.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Equipo-8-8/backend.git"
+  },
+  "author": "Equipo 8",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Equipo-8-8/backend/issues"
+  },
+  "homepage": "https://github.com/Equipo-8-8/backend#readme"
+}
