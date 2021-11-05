@@ -1,4 +1,4 @@
-import { async } from '@firebase/util';
+
 import express from 'express'
 import { initializeApp } from "firebase/app";
 import { getStorage, ref, getDownloadURL, listAll } from 'firebase/storage';
@@ -36,20 +36,18 @@ app.get('/image', (req, res) => {
 
 async function getUrl(ref) {
   const url = await getDownloadURL(ref)
-  // console.log(url);
   return url
 }
 
 app.get('/images', async (req, res) => {
   const books = []
   const list = await listAll(imagesRef)
-  list.items.forEach( async book => {
-    const bookRef = ref(storage, book.fullPath)
-    const url = await getUrl(bookRef)
+
+  for (const item of list.items) {
+    const itemRef = ref(storage, item.fullPath)
+    const url = await getUrl(itemRef)
     books.push(url)
-  })
-  //TODO: Fix this async issue
-  console.log(books);
+  }
   res.send(books)
 })
 
