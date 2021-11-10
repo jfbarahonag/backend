@@ -3,9 +3,8 @@ const morgan = require("morgan");
 const cors = require("cors");
 const app = express();
 const router = require("./routes");
+const imagesRef = require('./connection-firebase')
 const port = process.env.PORT || 4000;
-
-const bodyParser = require("body-parser");
 
 // Connect MongoDB
 require("./connection");
