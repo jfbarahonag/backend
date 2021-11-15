@@ -8,6 +8,9 @@ const port = process.env.PORT || 4000;
 const bodyParser = require("body-parser");
 
 // Connect MongoDB
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
 require("./connection");
 
 // app.use(bodyParser.json());

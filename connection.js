@@ -1,8 +1,5 @@
 const mongoose = require("mongoose");
 // const database = require("./database");
-if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config();
-}
 
 const options = {
   useNewUrlParser: true,
