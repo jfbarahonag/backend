@@ -10,7 +10,7 @@ const productSchema = new mongoose.Schema(
       unique: true
     },
     image: { 
-      type: String, 
+      type: Array, 
     }, 
     price: { 
       type: Number, 
@@ -19,7 +19,7 @@ const productSchema = new mongoose.Schema(
       type: String, 
     }, 
     features: { 
-      type: String, 
+      type: Array, 
     }, 
     category_id: { 
       type: String, 
@@ -29,9 +29,11 @@ const productSchema = new mongoose.Schema(
     },
     created_at: {
       type: Date,
+      default: Date.now,
     },
     last_modified: {
       type: Date,
+      default: Date.now,
     }
   }, 
   { 

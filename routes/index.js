@@ -8,7 +8,7 @@ const productRouter = require("./product");
 // const fileRouter = require("./file");
 
 router.use("/users", userRouter);
-router.use("/subscriber", subscriberRouter);
+router.use("/subscribers", subscriberRouter);
 router.use("/categories", categoryRouter);
 router.use("/products", productRouter);
 // router.use("/images", fileRouter);
