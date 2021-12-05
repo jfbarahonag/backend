@@ -3,6 +3,17 @@ const bcrypt = require("bcrypt");
 const token = require("../services/token");
 
 // Privado
+const index = async (req, res, next) => {
+  try {
+    const reg = await model.find();
+    res.status(200).json(reg);
+  } catch (e) {
+    res.status(500).send({
+      message: "Ha ocurrido un error.",
+    });
+    next(e);
+  }
+};
 
 // Público
 const add = async (req, res, next) => {
@@ -52,7 +63,34 @@ const login = async (req, res, next) => {
   } catch (error) {}
 };
 
+const update = async (req, res, next) => {
+  try {
+    const { email } = req.body
+    let checkEmail = await model.find({ email });
+    if (!checkEmail) { //email is not registered yet
+      req.body.password = await bcrypt.hash(req.body.password, 10);
+      await model.findByIdAndUpdate(req.params.id, { $set: req.body });
+      res.status(200).send({
+        message: "Algo raro paso"
+      })
+    } else { // email exists
+      req.body.password = await bcrypt.hash(req.body.password, 10);
+      await model.findByIdAndUpdate(req.params.id, { $set: req.body });
+      res.status(200).send({
+        message: "Usuario actualizado.",
+      });
+    }
+  } catch (error) {
+    res.status(302).send({
+      message: "Email en uso por otra cuenta.",
+    });
+    next(error);
+  }
+};
+
 module.exports = {
+  index,
   add,
   login,
+  update,
 };
